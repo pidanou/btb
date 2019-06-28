@@ -47,9 +47,8 @@ module.exports = {
     },
 
     sendVerifToken : async (req, res, next) => {
-        let verifToken = crypto.createHmac("sha512", req.body.password).update(req.body.email).digest("base64");
-        req.body.verifToken = verifToken;
-
+        let rawToken = crypto.createHmac("sha512", req.body.password).update(req.body.email).digest("base64");
+        req.body.verifToken = rawToken.replace(/\//g, "")
         mail.sendVerifMail(req.body);
 
         return next()
@@ -62,6 +61,16 @@ module.exports = {
         } else {
             return next()
         }
+    },
+
+    verifyToken : async (req, res, next) => {
+        let user = await userModel.userModel.findOne({verifToken:req.params.token});
+        if (user){
+            req.body.userId = user._id;
+            return next()
+        }
+        res.status(422).send("wrong token")
+
     }
 
 };

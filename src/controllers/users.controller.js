@@ -97,6 +97,7 @@ module.exports = {
             let hash = crypto.createHmac('sha512', salt).update(req.body.password).digest("base64");
             req.body.password = salt + "$" + hash;
         }
+        console.log(req.body)
         await userModel.patchUser(req.params.userId, req.body);
         res.status(200).send({"user patched":req.params.userId})
     },
@@ -106,6 +107,12 @@ module.exports = {
         }
         await userModel.patchUser(req.params.userId, req.body);
         res.status(200).send({"user patched" : req.params.userId})
+    },
+    verifyUser : async (req, res)=>{
+        await userModel.setVerify(req.body.userId);
+        await userModel.patchUser(req.body.userId, {permissionLevel: 1});
+
+        res.status(200).send("user verified")
     },
 
     //delete methods

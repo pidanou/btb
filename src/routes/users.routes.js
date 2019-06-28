@@ -11,15 +11,15 @@ module.exports = {
 
     userRoutesConfig : (app) => {
 
-        //creation routes
         app.post("/register", [
             usersController.verifyRegistrationFields,
             authValidation.sendVerifToken,
             usersController.insert
         ]);
 
-        app.post("/verify", [
-
+        app.get("/verify/:token", [
+            authValidation.verifyToken,
+            usersController.verifyUser
         ]);
 
         //searching routes

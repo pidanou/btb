@@ -14,7 +14,9 @@ module.exports = {
         app.post("/logout",[
             authValidation.validJWTNeeded,
             authValidation.setUserToLoggedOut
-        ])
+        ]);
+
+
     }
 
 };

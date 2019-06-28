@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CQFD Confirm Email</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body style = "background-color: #f1f1f1">
 
-<table style="font-family: 'Roboto', 'Helvetica', sans-serif;border-collapse: separate; margin : 0 auto;">
+<table style="font-family: 'Roboto', 'Helvetica', sans-serif;color:black;border-collapse: separate; margin : 0 auto;">
     <tr>
         <td>
             Hello!
@@ -26,12 +27,22 @@
                         By clicking on the following link, you are confirming your email address.
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
                 <tr style="padding:20% 30% ; ">
                     <td style="border-radius:5px; padding: 0 20%; margin: 0 auto">
                         <a style="display : block;text-align: center; background-color: cornflowerblue;text-decoration: none;color:white; padding: 5% 5% 5% 5%; border-radius: 5px"
-                           href="http://google.fr">
+                           href={{url}}/verify/{{token}}>
                             Confirm Email Address
                         </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
                     </td>
                 </tr>
 

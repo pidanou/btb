@@ -106,8 +106,8 @@ module.exports = {
 
     setVerify : async (id) => {
         try {
-            let user = findById(is);
-            user.isVerified = true;
+            let user = await userModel.findById(id);
+            user.verifToken = undefined;
             user.save();
             return "ok";
         }  catch (err) {
